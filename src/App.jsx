@@ -9,13 +9,13 @@ const App = () => {
            <BrowserRouter>
               <Routes>
                 <Route path='/' element={<Home/>}/>
-                <Route path='/home' element={<div>jatt</div>}/>
+                <Route path='/home' element={<div>Home</div>}/>
                 <Route path='/login' element={<Login/>}/>
                 <Route path='/signup' element={<Signup/>}/>
-                <Route path='/signup/complete-profile' element={<div>jatt</div>}/> 
+                <Route path='/signup/complete-profile' element={<div>Complete Profile</div>}/> 
                 <Route path='/forget-password' element={<ForgetPassword/>}/>
-                <Route path='/profile' element={<div>jatt</div>}/>
-                <Route path='/not-found' element={<div>jatt</div>}/>
+                <Route path='/profile' element={<div>Profile</div>}/>
+                <Route path='/not-found' element={<div>not found</div>}/>
               </Routes>
            </BrowserRouter>
         </AuthProvider>
