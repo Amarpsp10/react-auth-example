@@ -1,10 +1,11 @@
 {
-  "name": "webpack-config",
+  "name": "react-auth-example",
   "version": "1.0.0",
-  "description": "Webpack v5 Configuration for React",
+  "description": "frontend authentication application",
   "private": "true",
   "scripts": {
-    "start": "webpack serve",
+    "start": "webpack && node server.js",
+    "dev": "webpack serve",
     "watch": "webpack --watch",
     "build": "cross-env NODE_ENV=production webpack",
     "build-dev": "webpack"
