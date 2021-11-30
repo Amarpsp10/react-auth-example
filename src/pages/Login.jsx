@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import classes from '../styles/Auth.css'
 import { Input, Button } from '../components'
 import { Link } from 'react-router-dom'

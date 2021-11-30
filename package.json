@@ -26,7 +26,9 @@
     "webpack-dev-server": "^4.5.0"
   },
   "dependencies": {
+    "aos": "^2.3.4",
     "axios": "^0.24.0",
+    "js-cookie": "^3.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
