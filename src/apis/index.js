@@ -1,6 +1,6 @@
 import axios from "axios";
 // import Cookies from 'js-cookie'
-const baseUrl = 'https://localhost:8081';
+const baseUrl = 'https://authentication-example-api.herokuapp.com';
 
 const Api = axios.create({
     baseURL:baseUrl,
@@ -46,6 +46,15 @@ const Logout = async(body) =>{
     return response;
 }
 
+const ForgetPassword = async(body) =>{
+    const response = Api.get('/api/forget-password',body).then(response=>{
+        return response
+    }).catch((e)=>{
+        return e.response
+    })
+    return response
+}
+
 const ResetPassowrd = async(body) =>{
     const response = Api.post('/api/reset-password',body).then(response=>{
         return response
@@ -54,6 +63,7 @@ const ResetPassowrd = async(body) =>{
     })
     return response;
 }
-const API = { Login, Signup, VerifyEmail, Logout, ResetPassowrd }
+
+const API = { Login, Signup, VerifyEmail, Logout, ResetPassowrd, ForgetPassword}
 
 export default API;
