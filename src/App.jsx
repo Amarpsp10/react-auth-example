@@ -15,6 +15,7 @@ const App = () => {
                 <Route path='/signup/complete-profile' element={<div>Complete Profile</div>}/> 
                 <Route path='/forget-password' element={<ForgetPassword/>}/>
                 <Route path='/profile' element={<div>Profile</div>}/>
+                <Route path='/verify-email/:id' element={<div>verify-email</div>}/>
                 <Route path='/not-found' element={<div>not found</div>}/>
               </Routes>
            </BrowserRouter>
