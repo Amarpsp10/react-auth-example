@@ -1,6 +1,6 @@
 import axios from "axios";
 // import Cookies from 'js-cookie'
-const baseUrl = process.env.BASE_URL || 'https://localhost:8081';
+const baseUrl = 'https://localhost:8081';
 
 const Api = axios.create({
     baseURL:baseUrl,

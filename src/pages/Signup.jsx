@@ -3,6 +3,7 @@ import classes from '../styles/Auth.css'
 import { Input, Button } from '../components'
 import { Link } from 'react-router-dom'
 export default function Signup() {
+    const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [pass, setPass] = useState('')
     const [passConfirm, setPassConfirm] = useState('')
@@ -21,6 +22,12 @@ export default function Signup() {
                     <h3>Hello !</h3>
                     <h5>Sign Up to Get Started</h5><br/><br/>
                     <form onSubmit={()=>{}}>
+                        <Input
+                            value={name}
+                            onChange={(text)=>setName(text)}
+                            placeholder='Name'
+                            type='name'
+                        /><br/>
                         <Input
                             value={email}
                             onChange={(text)=>setEmail(text)}
