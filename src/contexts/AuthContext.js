@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie'
 import React,{useContext, createContext, useState, useEffect} from 'react'
 const AuthContext = createContext()
-
+import Api from '../apis'
 export function useAuth(){
     return useContext(AuthContext)
 }
@@ -9,10 +9,25 @@ export function useAuth(){
 const AuthProvider = ({children}) =>{
     const [loading, setLoading] = useState(true);
     const [token, setToken ] = useState(null);
+    const [user, setUser] = useState(null);
 
     useEffect(()=>{
         resolveAuth();
     },[])
+
+    useEffect(()=>{
+        fetchDetail();
+    },[token])
+
+    const fetchDetail = async() =>{
+        if(!token){
+            return setUser(null)
+        }
+        const result = await Api.fetchUser()
+        if(result && result.status===200){
+            setUser(result.data)
+        }
+    }
     
     const resolveAuth = async() =>{
         if(Cookies.get('token')){
@@ -24,7 +39,8 @@ const AuthProvider = ({children}) =>{
     const value = {
         loading,
         token,
-        setToken
+        setToken,
+        user
     }
 
     return(

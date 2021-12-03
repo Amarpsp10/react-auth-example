@@ -64,6 +64,14 @@ const ResetPassowrd = async(body) =>{
     return response;
 }
 
-const API = { Login, Signup, VerifyEmail, Logout, ResetPassowrd, ForgetPassword}
+const fetchUser = async() =>{
+    const response = Api.get(`/api/profile/${Cookies.get('token')}`).then(response=>{
+        return response
+    }).catch((e)=>{
+        return e.response
+    })
+    return response
+}
+const API = { Login, Signup, VerifyEmail, Logout, ResetPassowrd, ForgetPassword, fetchUser}
 
 export default API;

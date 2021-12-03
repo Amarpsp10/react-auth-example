@@ -3,7 +3,7 @@ import classes from '../styles/Input.css'
 import { MdOutlineEmail, MdOutlineLock } from 'react-icons/md'
 import { FiUser } from 'react-icons/fi'
 
-const Input = ({value, onChange, placeholder, type}) =>{
+const Input = ({value, onChange, placeholder, type, disabled}) =>{
     return(
         <div className={classes.container}>
             {type==='email'? <MdOutlineEmail className={classes.icon}/> : type==='password'? <MdOutlineLock className={classes.icon}/>: <FiUser className={classes.icon}/>}
@@ -13,6 +13,7 @@ const Input = ({value, onChange, placeholder, type}) =>{
                 onChange={(e)=>onChange(e.target.value)}
                 placeholder={placeholder}
                 type={type}
+                disabled={disabled}
             />
         </div>
     )
