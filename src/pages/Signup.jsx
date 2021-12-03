@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import classes from '../styles/Auth.css'
 import { Input, Button } from '../components'
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useHistory, Redirect} from 'react-router-dom'
 import Api from '../apis'
 import { Error } from '../components'
-
+import { AuthContext } from '../contexts/AuthContext'
 export default function Signup() {
+    const {token} = useContext(AuthContext)
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [pass, setPass] = useState('')
@@ -40,6 +41,7 @@ export default function Signup() {
     }
     return (
         <div className={classes.AuthPage}>
+            {token? <Redirect to='/home'/>:null}
             <div className={classes.left}>
                 <div className={classes.leftContent}>
                     <h4>Authentication Signup Page</h4>

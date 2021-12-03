@@ -1,14 +1,14 @@
 import React, { useContext, useState } from 'react'
 import classes from '../styles/Auth.css'
 import { Input, Button, Error } from '../components'
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useHistory, Redirect} from 'react-router-dom'
 import Api from '../apis'
 import { AuthContext } from '../contexts/AuthContext'
 import Cookies from 'js-cookie'
 
 export default function Login() {
     const history = useHistory()
-    const { setToken } = useContext(AuthContext);
+    const { setToken, token } = useContext(AuthContext);
     const [email, setEmail] = useState('')
     const [pass, setPass] = useState('')
     const [loading, setLoading] = useState(false)
@@ -39,6 +39,7 @@ export default function Login() {
     }
     return (
         <div className={classes.AuthPage}>
+            {token? <Redirect to='/home'/>:null}
             <div className={classes.left}>
                 <div className={classes.leftContent}>
                     <h4>Authentication Login Page</h4>
