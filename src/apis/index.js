@@ -1,6 +1,6 @@
 import axios from "axios";
-// import Cookies from 'js-cookie'
-const baseUrl = 'https://authentication-example-api.herokuapp.com';
+import Cookies from 'js-cookie'
+const baseUrl = process.env.NODE_ENV==='development'? 'http://localhost:8081':'https://authentication-example-api.herokuapp.com';
 
 const Api = axios.create({
     baseURL:baseUrl,
@@ -20,16 +20,16 @@ const Signup = async(body) =>{
 }
 
 const Login = async(body) =>{
-    const response = Api.get('/api/login',body).then(response=>{
-        return response;
+    const response = Api.post('/api/login',body).then(response=>{
+        return response
     }).catch((e)=>{
-        return e.response;
+        return e.response
     })
-    return response;
+    return response
 }
 
 const VerifyEmail = async(body) =>{
-    const response = Api.get('/api/verify-email',body).then(response=>{
+    const response = Api.get(`/api/verify-email/${body.email}`).then(response=>{
         return response;
     }).catch((e)=>{
         return e.response;
@@ -37,8 +37,8 @@ const VerifyEmail = async(body) =>{
     return response;
 }
 
-const Logout = async(body) =>{
-    const response = Api.get('/api/logout',body).then(response=>{
+const Logout = async() =>{
+    const response = Api.get(`/api/logout/${Cookies.get('token')}`).then(response=>{
         return response;
     }).catch((e)=>{
         return e.response;
@@ -47,7 +47,7 @@ const Logout = async(body) =>{
 }
 
 const ForgetPassword = async(body) =>{
-    const response = Api.get('/api/forget-password',body).then(response=>{
+    const response = Api.get(`/api/forget-password/${body.email}`).then(response=>{
         return response
     }).catch((e)=>{
         return e.response
