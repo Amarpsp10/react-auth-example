@@ -1,6 +1,5 @@
 import Cookies from 'js-cookie'
 import React,{useContext, createContext, useState, useEffect} from 'react'
-import Api from '../apis'
 const AuthContext = createContext()
 
 export function useAuth(){

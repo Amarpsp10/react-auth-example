@@ -5,8 +5,10 @@ export default function Button({lable, onClick, loading, variant, type}) {
     return (
         <button 
             className={variant==='primary'? Classes.button1 : Classes.button2} 
-            onClick={()=>{loading? null : onClick()}}
-            type={type}>{loading? <Loader size={20}/> : lable}
+            disabled={loading}
+            onClick={()=>{type? null : onClick()}}
+            type={type}>
+                {loading? <Loader size={20}/> : lable}
         </button>
     )
 }
