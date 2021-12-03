@@ -1,22 +1,24 @@
 import React from "react";
 import './styles/index.css'
 import { AuthProvider } from "./contexts/AuthContext";
-import { BrowserRouter, Route, Routes} from "react-router-dom";
-import { Home, Login, Signup, ForgetPassword } from "./pages";
+import { BrowserRouter, Switch, Route} from "react-router-dom";
+import { Home, Login, Signup, ForgetPassword, VerifyEmail, Profile, Page404, Message, ResetPassword} from "./pages";
+
 const App = () => {
     return (
         <AuthProvider>
            <BrowserRouter>
-              <Routes>
-                <Route path='/' element={<Home/>}/>
-                <Route path='/home' element={<div>Home</div>}/>
-                <Route path='/login' element={<Login/>}/>
-                <Route path='/signup' element={<Signup/>}/>
-                <Route path='/signup/complete-profile' element={<div>Complete Profile</div>}/> 
-                <Route path='/forget-password' element={<ForgetPassword/>}/>
-                <Route path='/profile' element={<div>Profile</div>}/>
-                <Route path='/not-found' element={<div>not found</div>}/>
-              </Routes>
+              <Switch>
+                <Route path='/' component={Home} exact/>
+                <Route path='/login' component={Login} exact/>
+                <Route path='/home' component={Profile} exact/>
+                <Route path='/signup' component={Signup} exact/>
+                <Route path='/forget-password' component={ForgetPassword} exact/>
+                <Route path='/verify-email' component={VerifyEmail} exact/>
+                <Route path='/reset-password' component={ResetPassword} exact/>
+                <Route path='/success' component={Message} exact/>
+                <Route path='*' component={Page404}/>
+              </Switch>
            </BrowserRouter>
         </AuthProvider>
     )
