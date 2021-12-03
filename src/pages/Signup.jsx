@@ -81,7 +81,7 @@ export default function Signup() {
                         <Button loading={loading} variant='primary' type='submit' lable='Login' />
                     </form><br/>
                     <div className={classes.links}>
-                        <p>Already have an account? <Link to='/login'>Log In</Link></p>
+                        <p>Already have an account? <Link to='/login'>Signup</Link></p>
                     </div>
                 </div>
             </div>
