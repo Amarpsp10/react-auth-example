@@ -78,10 +78,10 @@ export default function Signup() {
                             type='password'
                         /><br/>
                         <Error message={error}/>
-                        <Button loading={loading} variant='primary' type='submit' lable='Login' />
+                        <Button loading={loading} variant='primary' type='submit' lable='Signup' />
                     </form><br/>
                     <div className={classes.links}>
-                        <p>Already have an account? <Link to='/login'>Signup</Link></p>
+                        <p>Already have an account? <Link to='/login'>Log In</Link></p>
                     </div>
                 </div>
             </div>
