@@ -32,9 +32,9 @@ export default function ResetPassword(props) {
             setLoading(false)
             return setError(result.data.message)
         }
-        if(result===200){
+        if(result.status===200){
             setToken(result.data.token)
-            history.push('/home',{message:result.data.message})
+            history.push({pathname:'/home',state:{message:result.data.message}})
         }
         setLoading(false)
     }

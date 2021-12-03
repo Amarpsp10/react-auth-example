@@ -21,7 +21,7 @@ export default function Signup() {
         if(!name || !email || !pass || !passConfirm){
             return setError('Please fill all the fields!')
         }
-        if(pass === passConfirm){
+        if(pass !== passConfirm){
             return setError('Password do not match !')
         }
         setLoading(true)
@@ -35,7 +35,7 @@ export default function Signup() {
             return setError(result.data.message)
         }
         if(result.status===201){
-            history.push('/success',{message:result.data.messsage})
+            history.push({pathname:'/success',state:{message:result.data.message}})
         }
         setLoading(false)
     }

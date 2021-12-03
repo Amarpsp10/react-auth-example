@@ -29,7 +29,7 @@ const Login = async(body) =>{
 }
 
 const VerifyEmail = async(body) =>{
-    const response = Api.get(`/api/verify-email/${body.email}`).then(response=>{
+    const response = Api.get(`/api/verify-email/${body.token}`).then(response=>{
         return response;
     }).catch((e)=>{
         return e.response;

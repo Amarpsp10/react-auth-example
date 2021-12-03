@@ -14,20 +14,6 @@ const AuthProvider = ({children}) =>{
     useEffect(()=>{
         resolveAuth();
     },[])
-
-    useEffect(()=>{
-        fetchDetail();
-    },[token])
-
-    const fetchDetail = async() =>{
-        if(!token){
-            return setUser(null)
-        }
-        const result = await Api.fetchUser()
-        if(result && result.status===200){
-            setUser(result.data)
-        }
-    }
     
     const resolveAuth = async() =>{
         if(Cookies.get('token')){
@@ -39,8 +25,7 @@ const AuthProvider = ({children}) =>{
     const value = {
         loading,
         token,
-        setToken,
-        user
+        setToken
     }
 
     return(

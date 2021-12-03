@@ -1,21 +1,34 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Api from '../apis'
 import classes from '../styles/Home.css'
 import { useHistory, Redirect} from 'react-router-dom'
-import { Button, Input } from '../components'
+import { Button, Input, Loader } from '../components'
 import {AuthContext} from '../contexts/AuthContext'
+import Cookies from 'js-cookie'
 
 const Profile = () =>{
     const history = useHistory()
-    const {token, setToken, user} = useContext(AuthContext)
+    const {token, setToken} = useContext(AuthContext)
     const [loading, setLoading] = useState(false)
+    const [user, setUser] = useState(null)
 
+    useEffect(()=>{
+        fetchUser();
+    },[])
+
+    const fetchUser = async() =>{
+        const result = await Api.fetchUser({token:Cookies.get('token')})
+        if(result && result.status===200){
+            setUser(result.data)
+        }
+    }
     const handleLogout = async() =>{
         setLoading(true)
         const result = await Api.Logout();
         if(result.status===200){
             setLoading(false)
             setToken(null)
+            Cookies.remove('token')
             return history.push('/')
         }
         setLoading(false)
@@ -37,6 +50,7 @@ const Profile = () =>{
                     disabled={true}
                     type='email'
                 />
+                
             </>
             :null}
             <h6></h6>
